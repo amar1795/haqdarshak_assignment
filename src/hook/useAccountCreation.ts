@@ -10,10 +10,10 @@ const useAccountCreation = () => {
     personalDetails: "",
   });
 
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentSetupStep, setCurrentStep] = useState(1);
 
   const validateStep = () => {
-    switch (currentStep) {
+    switch (currentSetupStep) {
       case 1: // Validate language
         return data.language !== "";
       case 2: // Validate login type
@@ -50,7 +50,7 @@ const useAccountCreation = () => {
 
   return {
     data,
-    currentStep,
+    currentSetupStep,
     goToNextStep,
     goToPreviousStep,
     updateField,

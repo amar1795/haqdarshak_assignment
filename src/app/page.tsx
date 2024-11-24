@@ -1,50 +1,96 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
+import Radiobox from "./components/Radiobox";
+import RadioOption from "./components/RadioOption";
+import NextButton from "./components/NextButton";
+import MainComponent from "./components/MainComponent";
+import useAccountCreation from "@/hook/useAccountCreation";
 
 export default function Home() {
-  const [isAnimating, setIsAnimating] = useState(false); // Track if the first component is animating out
-  const [showSecondPage, setShowSecondPage] = useState(false); // Track which component is shown
+  const [currentStep, setCurrentStep] = useState(0); // Track the current slide
+  const [isAnimating, setIsAnimating] = useState(false); // Track if the animation is ongoing
+  const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
+    useAccountCreation();
 
   useEffect(() => {
-    // Start the animation after 1 second
-    const timer = setTimeout(() => {
-      setIsAnimating(true); // Trigger the "out" animation
-      setTimeout(() => setShowSecondPage(true), 1000); // Show the second page after the "out" animation completes
-    }, 1000);
+    if (currentStep < 2) {
+      const timer = setTimeout(() => {
+        setIsAnimating(true); // Start exit animation for current slide
+        setTimeout(() => {
+          setCurrentStep((prev) => prev + 1); // Move to the next slide
+          setIsAnimating(false); // Reset animation state
+        }, 500); // Exit animation duration
+      }, 1000); // Wait before starting the exit animation
+      return () => clearTimeout(timer);
+    }
+  }, [currentStep]);
 
-    return () => clearTimeout(timer); // Cleanup the timer
-  }, []);
-
-  return (
-    <>
-      {!showSecondPage ? (
-        <div className="bg-[#4f285e] h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className={`text-white text-[5rem] text-center ${
-            isAnimating ? "animate-slideOutLeft" : "animate-slideInLeft"
-          }`}
-        >
+  const slides = [
+    {
+      content: (
+        <div className="text-white text-[5rem] text-center">
           <h1 className="leading-none">हकदर्शक</h1>
           <h1 className="leading-none">haqdarshaq</h1>
         </div>
-        </div>
-      ) : (
-        <div className="bg-[#f8e6ff] h-screen flex items-center justify-center overflow-hidden">
-        <div className="text-[#4f285e] text-[5rem] text-center items-center animate-slideInRight">
-          <div className=" items-center flex flex-col  justify-center ">
-          <h1 className="leading-none ">Getting  benefits is 
-          now easy!</h1>
-         <div className=" bg-black relative ">
-         <div className=" bg-pink-700 flex items-center justify-center ">
-         <img src="line5.png"  alt="" />
-         </div>
-         <img src="hqmenuimage.png"   alt="sdgsd" />
-         </div>
+      ),
+      bgColor: "bg-[#4f285e]",
+    },
+    {
+      content: (
+        <div className="text-[#4f285e] text-[5rem] text-center items-center">
+          <div className="items-center flex flex-col justify-center">
+            <h1 className="leading-none">Getting benefits is now easy!</h1>
+            <div className="bg-black relative">
+              <div className="bg-pink-700 flex items-center justify-center">
+                <img src="line5.png" alt="" />
+              </div>
+              <img src="hqmenuimage.png" alt="sdgsd" />
+            </div>
           </div>
-          
         </div>
+      ),
+      bgColor: "bg-[#f8e6ff]",
+    },
+    {
+      content: (
+      <>
+      <div>
+      {/* Step 1: Language Selection */}
+      {currentSetupStep === 1 && (
+
+        <div>
+          <h2>Select Language</h2>
+          <input
+            type="text"
+            value={data.language}
+           
+            placeholder="Enter language"
+          />
+          <MainComponent updateData={updateData} errors={errors} />
         </div>
+        
       )}
-   </>
+
+    
+    </div>
+      
+      </>
+      ),
+      bgColor: "bg-[#4f285e]",
+    },
+  ];
+
+  return (
+    <div
+      className={`h-screen flex items-center justify-center overflow-hidden ${slides[currentStep].bgColor}`}
+    >
+      <div
+        className={`absolute w-full h-full flex items-center justify-center transition-transform duration-500 ${
+          isAnimating ? "animate-exitToLeft" : "animate-enterFromRight"
+        }`}
+      >
+        {slides[currentStep].content}
+      </div>
+    </div>
   );
 }
