@@ -4,7 +4,7 @@ import Radiobox from "./components/Radiobox";
 import RadioOption from "./components/RadioOption";
 import NextButton from "./components/NextButton";
 import MainComponent from "./components/MainComponent";
-import useAccountCreation from "@/hook/useAccountCreation";
+import useAccountCreation from "@/hook/AccountContext";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(0); // Track the current slide
@@ -59,17 +59,17 @@ export default function Home() {
       {currentSetupStep === 1 && (
 
         <div>
-          <h2>Select Language</h2>
-          <input
-            type="text"
-            value={data.language}
-           
-            placeholder="Enter language"
-          />
-          <MainComponent updateData={updateData} errors={errors} />
+          <MainComponent />
         </div>
         
       )}
+      {currentSetupStep === 2 && (
+
+<div>
+ <h1>sdgnods</h1>
+</div>
+
+)}
 
     
     </div>

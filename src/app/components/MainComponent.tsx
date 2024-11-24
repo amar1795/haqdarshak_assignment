@@ -1,9 +1,12 @@
 import React from 'react'
 import RadioOption from './RadioOption'
 import NextButton from './NextButton'
+import { useAccountCreation } from '../accountContext';
 
-const MainComponent = ({updateData,errors}) => {
-  
+const MainComponent = () => {
+  const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
+    useAccountCreation();
+    
   return (
     <div>
        <div >
@@ -16,10 +19,11 @@ const MainComponent = ({updateData,errors}) => {
           <div className=" bg-white w-full h-[70vh] rounded-2xl  flex flex-col justify-around items-center ">
             {/* <Radiobox/> */}
             <div>
-              <RadioOption text="English" updateData={updateData} />
-              <RadioOption text="हिन्दी" updateData={updateData}/>
-              <RadioOption text="ಕನ್ನಡ" updateData={updateData}/>
+              <RadioOption text="English" value="english"  />
+              <RadioOption text="हिन्दी"  value="हिन्दी"/>
+              <RadioOption text="ಕನ್ನಡ" value="ಕನ್ನಡ" />
             </div>
+            
             {errors?.language && <p className="text-red-500">{errors?.language}</p>}
 
             <div>
