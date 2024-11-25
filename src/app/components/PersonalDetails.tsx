@@ -35,7 +35,7 @@ const PersonalDetails = ({ question, radioOptions, stepData }) => {
                   {/* <StateDropdown stepData={stepData} /> */}
                   <input
                     type="text"
-                    className="bg-[#e5e1de] outline-none h-[2rem]"
+                    className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e]"
                     placeholder="Enter your full Name"
                   />
                 </div>
@@ -88,7 +88,7 @@ const PersonalDetails = ({ question, radioOptions, stepData }) => {
 
                   <input
                     type="text"
-                    className="bg-[#e5e1de] outline-none h-[2rem]  "
+                    className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e] "
                     placeholder="Enter your full Name"
                   />
                 </div>
@@ -97,7 +97,7 @@ const PersonalDetails = ({ question, radioOptions, stepData }) => {
                   {/* <StateDropdown stepData={stepData} /> */}
                   <input
                     type="text"
-                    className="bg-[#e5e1de] outline-none h-[2rem] w-[2rem]"
+                    className="bg-[#e5e1de] outline-none h-[2rem] w-[2rem] text-[#4f285e]"
                     placeholder="Age"
                   />
                 </div>
