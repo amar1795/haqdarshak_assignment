@@ -9,12 +9,15 @@ const INITIAL_DATA = {
   address: "",
   phoneNumber: "",
   personalDetails: "",
+  otp: "",
 };
 
 const AccountContext = createContext(null);
 
 export const AccountProvider = ({ children }) => {
+  
   const [currentSetupStep, setCurrentStep] = useState(1);
+
   const [data, setData] = useState(() => {
     if (typeof window !== "undefined") {
       try {
@@ -27,6 +30,7 @@ export const AccountProvider = ({ children }) => {
     }
     return INITIAL_DATA;
   });
+
   const [errors, setErrors] = useState({});
 
   const validateStep = useCallback(() => {

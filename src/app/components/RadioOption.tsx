@@ -8,7 +8,7 @@ const RadioOption = ({text,value}) => {
 
     const handleChange = (e) => {    
         updateData("language", value); // Update the selected language
-        alert("Selected language: " + data?.language);
+        // alert("Selected language: " + data?.language);
       };
   return (
     <div className=' w-[20rem] my-4'>

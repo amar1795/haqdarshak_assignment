@@ -4,13 +4,20 @@ import Radiobox from "./components/Radiobox";
 import RadioOption from "./components/RadioOption";
 import NextButton from "./components/NextButton";
 import MainComponent from "./components/MainComponent";
-import useAccountCreation from "@/hook/AccountContext";
+import { useAccountCreation } from "./accountContext";
+import useSetupSteps from "@/hook/useSetupSteps";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(0); // Track the current slide
   const [isAnimating, setIsAnimating] = useState(false); // Track if the animation is ongoing
   const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
+
+  const { getStepData } = useSetupSteps();
+
+  const { question, options } = getStepData(currentSetupStep);
+
+  console.log("this is the current question", question);
 
   useEffect(() => {
     if (currentStep < 2) {
@@ -23,7 +30,7 @@ export default function Home() {
       }, 1000); // Wait before starting the exit animation
       return () => clearTimeout(timer);
     }
-  }, [currentStep]);
+  }, [currentStep,nextStep]);
 
   const slides = [
     {
@@ -53,28 +60,32 @@ export default function Home() {
     },
     {
       content: (
-      <>
-      <div>
-      {/* Step 1: Language Selection */}
-      {currentSetupStep === 1 && (
-
-        <div>
-          <MainComponent />
-        </div>
-        
-      )}
-      {currentSetupStep === 2 && (
-
-<div>
- <h1>sdgnods</h1>
-</div>
-
-)}
-
-    
-    </div>
-      
-      </>
+        <>
+          <div>
+            {/* Step 1: Language Selection */}
+            {currentSetupStep === 1 && (
+              <div>
+                {question && options && (
+                  <MainComponent question={question} radioOptions={options} />
+                )}
+              </div>
+            )}
+            {currentSetupStep === 2 && (
+              <div>
+                {question && options && (
+                  <MainComponent question={question} radioOptions={options} />
+                )}
+              </div>
+            )}
+            {currentSetupStep === 3 && (
+              <div>
+                {question && options && (
+                  <MainComponent question={question} radioOptions={options} />
+                )}
+              </div>
+            )}
+          </div>
+        </>
       ),
       bgColor: "bg-[#4f285e]",
     },

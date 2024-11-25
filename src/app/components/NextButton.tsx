@@ -6,7 +6,7 @@ const NextButton = () => {
     useAccountCreation();
 
     useEffect(() => {
-      alert("Selected language: " + data?.language);
+      // alert("Selected language: " + data?.language);
       console.log("this is the errors",errors);
       }, [errors]);
       
