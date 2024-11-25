@@ -6,6 +6,7 @@ import MobileNumber from "./MobileNumber";
 import Location from "./Location";
 import AddressComponent from "./AddressComponent";
 import PersonalDetails from "./PersonalDetails";
+import ScanCard from "./ScanCard";
 
 const RenderStep = () => {
   const { currentSetupStep, data, updateData, errors, nextStep, prevStep } =
@@ -99,7 +100,7 @@ const RenderStep = () => {
       case StepType.SMART_CARD_OPTIONS:
         return (
           <div>
-            <MainComponent
+            <ScanCard
               stepData={"otp"}
               question={stepsData.SMART_CARD_OPTIONS.question}
               radioOptions={stepsData.SMART_CARD_OPTIONS.options}

@@ -175,7 +175,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
            <p className=" self-center items-center text-[#4f285e] ml-[3rem] mt-[1rem]">Resend Code in <span className="mt-4 text-lg">
   {isTimerActive
     ? ` ${Math.floor(timer / 60)}:${("0" + (timer % 60)).slice(-2)}`
-    : "OTP Expired"}
+    : "Did not received OTP ?"}
 </span>
 </p>
 

@@ -87,7 +87,7 @@ const STEP_SEQUENCES: Record<LoginType, StepConfig[]> = {
     { type: StepType.LANGUAGE, required: true },
     { type: StepType.LOGIN_TYPE, required: true },
     { type: StepType.PHONE_NUMBER, required: true },
-    { type: StepType.OTP_VERIFICATION, required: true },
+    // { type: StepType.OTP_VERIFICATION, required: true },
     { type: StepType.SETUP_COMPLETE, required: true },
   ],
   [LoginType.SMART_CARD]: [
@@ -95,10 +95,10 @@ const STEP_SEQUENCES: Record<LoginType, StepConfig[]> = {
     { type: StepType.LOGIN_TYPE, required: true },
     { type: StepType.SMART_CARD_OPTIONS, required: true },
     // The following steps are conditional based on the smart card option selected
-    { type: StepType.CARD_NUMBER, required: false },
-    { type: StepType.CARD_SCAN, required: false },
-    { type: StepType.PHONE_NUMBER, required: false },
-    { type: StepType.OTP_VERIFICATION, required: false },
+    // { type: StepType.CARD_NUMBER, required: false },
+    // { type: StepType.CARD_SCAN, required: false },
+    // { type: StepType.PHONE_NUMBER, required: false },
+    // { type: StepType.OTP_VERIFICATION, required: false },
     { type: StepType.SETUP_COMPLETE, required: false },
   ],
 };

@@ -36,6 +36,10 @@ const StateDropdown = ({stepData}) => {
 
       updateData(stepData, value); // Update the selected language
     };
+
+    // if(selectedState!==states[0]){
+    //   nextStep();
+    // }
  
 
   return (
