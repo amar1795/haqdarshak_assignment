@@ -5,7 +5,6 @@ import RadioOption from "./components/RadioOption";
 import NextButton from "./components/NextButton";
 import MainComponent from "./components/MainComponent";
 import { useAccountCreation } from "./accountContext";
-import useSetupSteps from "@/hook/useSetupSteps";
 import RenderStep from "./components/RenderStep";
 
 export default function Home() {
@@ -14,21 +13,17 @@ export default function Home() {
   const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
 
-  // const { getStepData } = useSetupSteps();
-
-  // const { question, options } = getStepData(currentSetupStep);
-
-  // console.log("this is the current question", question);
+ 
 
   useEffect(() => {
     if (currentStep < 2) {
       const timer = setTimeout(() => {
-        setIsAnimating(true); // Start exit animation for current slide
+        setIsAnimating(true); 
         setTimeout(() => {
-          setCurrentStep((prev) => prev + 1); // Move to the next slide
-          setIsAnimating(false); // Reset animation state
-        }, 500); // Exit animation duration
-      }, 1000); // Wait before starting the exit animation
+          setCurrentStep((prev) => prev + 1); 
+          setIsAnimating(false); 
+        }, 500); 
+      }, 1000); 
       return () => clearTimeout(timer);
     }
   }, [currentStep,nextStep]);
@@ -63,15 +58,7 @@ export default function Home() {
       content: (
         <>
           <div>
-            {/* Step 1: Language Selection
-            {currentSetupStep === 1 && (
-              <div>
-                {question && options && (
-                  <MainComponent question={question} radioOptions={options} />
-                )}
-              </div>
-            )} */}
-
+         
             
          <RenderStep/>
           </div>

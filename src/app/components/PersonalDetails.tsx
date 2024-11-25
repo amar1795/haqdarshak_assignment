@@ -35,6 +35,7 @@ const PersonalDetails = ({ question, radioOptions, stepData }) => {
                   {/* <StateDropdown stepData={stepData} /> */}
                   <input
                     type="text"
+                    onChange={(e) => updateData("personalDetails", e.target.value)}
                     className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e]"
                     placeholder="Enter your full Name"
                   />

@@ -107,8 +107,8 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
       )}
 
       {showOtpConfirm && !showOtpInput && (
-        <div className="flex flex-col gap-4">
-          <div className=" h-[10vh] mb-2 ">
+        <div className="flex flex-col gap-4 w-[60vw]">
+          <div className=" h-[10vh]  ">
             <h1 className=" text-white text-[3rem]">
               Do you want to proceed without the OTP verification
             </h1>

@@ -7,6 +7,9 @@ import Location from "./Location";
 import AddressComponent from "./AddressComponent";
 import PersonalDetails from "./PersonalDetails";
 import ScanCard from "./ScanCard";
+import Success1 from "./success/Success1";
+import Success2 from "./success/Success2";
+import CombinedComponent from "./success/CombinedComponent";
 
 const RenderStep = () => {
   const { currentSetupStep, data, updateData, errors, nextStep, prevStep } =
@@ -110,9 +113,9 @@ const RenderStep = () => {
 
         case StepType.SETUP_COMPLETE:
         return (
-          <div className=" bg-white h-screen w-[80vw]">
-            <h1>Setup complete</h1>
-          </div>
+         <CombinedComponent/>
+
+
         );
 
       default:
@@ -124,10 +127,7 @@ const RenderStep = () => {
     <div>
       {QuestionDisplay()}
       <div>
-        {currentSetupStep !== StepType.LANGUAGE && (
-          <button onClick={prevStep}>Previous</button>
-        )}
-        <button onClick={nextStep}>Next</button>
+       
       </div>
     </div>
   );

@@ -12,6 +12,14 @@ const AddressComponent = ({ question, radioOptions, stepData }) => {
   // console.log("this is the current step", currentSetupStep,stepData);
   return (
     <div>
+      {currentSetupStep !== "LANGUAGE" && (
+          <button
+            className=" bg-white  w-[5rem] rounded-2xl"
+            onClick={prevStep}
+          >
+            <div className=" text-[2rem]">&#8592;</div>
+          </button>
+        )}
       <div>
         {currentSetupStep.toLowerCase() !== stepData && (
           <button

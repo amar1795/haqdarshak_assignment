@@ -10,22 +10,23 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
   const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
 
-    const [usePhoneNumber, setUsePhoneNumber] = useState(false);
-  // console.log("this is the current step", currentSetupStep,stepData);
+  const [usePhoneNumber, setUsePhoneNumber] = useState(false);
+  console.log("this is the current step", currentSetupStep);
 
-  if(stepData =="otp" && usePhoneNumber)
-  {
-    return <MobileNumber
-    stepData={"phoneNumber"}
-    question={stepsData.PHONE_NUMBER.question}
-    radioOptions={stepsData.PHONE_NUMBER.options}
-    />
+  if (stepData == "otp" && usePhoneNumber) {
+    return (
+      <MobileNumber
+        stepData={"phoneNumber"}
+        question={stepsData.PHONE_NUMBER.question}
+        radioOptions={stepsData.PHONE_NUMBER.options}
+      />
+    );
   }
 
   return (
     <div>
       <div>
-        {currentSetupStep.toLowerCase() !== stepData && (
+        {currentSetupStep !== "LANGUAGE" && (
           <button
             className=" bg-white  w-[5rem] rounded-2xl"
             onClick={prevStep}
@@ -47,20 +48,22 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
                 stepData={stepData}
               />
             ))}
-           
           </div>
           {errors?.language && (
             <p className="text-red-500">{errors?.language}</p>
           )}
 
-{
-  stepData =="otp" && (<button  onClick={()=>setUsePhoneNumber(true)}
-    disabled={data?.language === ""}
-    className={' bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center '}>
-      <h1 className=' text-white' >Use Phone Number</h1>
-    </button>)
-}
-          
+          {stepData == "otp" && (
+            <button
+              onClick={() => setUsePhoneNumber(true)}
+              disabled={data?.language === ""}
+              className={
+                " bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center "
+              }
+            >
+              <h1 className=" text-white">Use Phone Number</h1>
+            </button>
+          )}
 
           <div>
             <NextButton />
