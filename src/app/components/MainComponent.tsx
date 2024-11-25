@@ -3,7 +3,7 @@ import RadioOption from './RadioOption'
 import NextButton from './NextButton'
 import { useAccountCreation } from '../accountContext';
 
-const MainComponent = ({ question, radioOptions }) => {
+const MainComponent = ({ question, radioOptions,stepData }) => {
   const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
     
@@ -24,6 +24,7 @@ const MainComponent = ({ question, radioOptions }) => {
                 key={index}
                 text={option.text}
                 value={option.value}
+                stepData={stepData}
               />
             ))}
           </div>

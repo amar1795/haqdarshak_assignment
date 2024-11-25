@@ -6,6 +6,7 @@ import NextButton from "./components/NextButton";
 import MainComponent from "./components/MainComponent";
 import { useAccountCreation } from "./accountContext";
 import useSetupSteps from "@/hook/useSetupSteps";
+import RenderStep from "./components/RenderStep";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(0); // Track the current slide
@@ -13,11 +14,11 @@ export default function Home() {
   const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
 
-  const { getStepData } = useSetupSteps();
+  // const { getStepData } = useSetupSteps();
 
-  const { question, options } = getStepData(currentSetupStep);
+  // const { question, options } = getStepData(currentSetupStep);
 
-  console.log("this is the current question", question);
+  // console.log("this is the current question", question);
 
   useEffect(() => {
     if (currentStep < 2) {
@@ -62,28 +63,17 @@ export default function Home() {
       content: (
         <>
           <div>
-            {/* Step 1: Language Selection */}
+            {/* Step 1: Language Selection
             {currentSetupStep === 1 && (
               <div>
                 {question && options && (
                   <MainComponent question={question} radioOptions={options} />
                 )}
               </div>
-            )}
-            {currentSetupStep === 2 && (
-              <div>
-                {question && options && (
-                  <MainComponent question={question} radioOptions={options} />
-                )}
-              </div>
-            )}
-            {currentSetupStep === 3 && (
-              <div>
-                {question && options && (
-                  <MainComponent question={question} radioOptions={options} />
-                )}
-              </div>
-            )}
+            )} */}
+
+            
+         <RenderStep/>
           </div>
         </>
       ),
