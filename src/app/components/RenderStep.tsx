@@ -3,6 +3,9 @@ import { useAccountCreation, StepType } from "../accountContext";
 import MainComponent from "./MainComponent";
 import { stepsData } from "@/hook/useSetupSteps";
 import MobileNumber from "./MobileNumber";
+import Location from "./Location";
+import AddressComponent from "./AddressComponent";
+import PersonalDetails from "./PersonalDetails";
 
 const RenderStep = () => {
   const { currentSetupStep, data, updateData, errors, nextStep, prevStep } =
@@ -57,18 +60,15 @@ const RenderStep = () => {
       case StepType.LOCATION:
         return (
           <div>
-            <MainComponent
-              stepData={"location"}
-              question={stepsData.LOCATION.question}
-              radioOptions={stepsData.LOCATION.options}
-            />
+            <Location  stepData={"location"} question={stepsData.LOCATION.question} radioOptions={stepsData.LOCATION.options}/>
+           
           </div>
         );
 
       case StepType.ADDRESS:
         return (
           <div>
-            <MainComponent
+            <AddressComponent
               stepData={"address"}
               question={stepsData.ADDRESS.question}
               radioOptions={stepsData.ADDRESS.options}
@@ -79,7 +79,7 @@ const RenderStep = () => {
       case StepType.PERSONAL_DETAILS:
         return (
           <div>
-            <MainComponent
+            <PersonalDetails
               stepData={"personalDetails"}
               question={stepsData.PERSONAL_DETAILS.question}
               radioOptions={stepsData.PERSONAL_DETAILS.options}
