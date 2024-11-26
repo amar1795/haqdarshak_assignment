@@ -112,7 +112,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
       </div>
 
       <button
-        onClick={nextStep}
+        onClick={handleNext}
         disabled={data?.phoneNumber?.length !== 10} // Check if phone number is exactly 10 digits
         className={`bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center ${
           data?.phoneNumber?.length !== 10 ? "opacity-50 cursor-not-allowed" : ""
@@ -143,7 +143,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                     onChange={() => setOtpChoice("no")}
                     checked={otpChoice === "no"}
                   />
-                  <h1 className=" pl-2 items-center 500 self-center">Yes</h1>
+                  <h1 className=" pl-2 items-center 500 self-center">Yes,proceed without OTP</h1>
                 </div>
               </div>
 
@@ -158,7 +158,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                     checked={otpChoice === "yes"}
                   />
                   <h1 className=" pl-2 items-center 500 self-center">
-                    send the OTP
+                   No,send me the OTP
                   </h1>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const Success2 = () => {
       }, 1000);
       return () => clearTimeout(timer);
     }
-    resetForm();
+    // resetForm();
   }, [currentStep]);
 
   

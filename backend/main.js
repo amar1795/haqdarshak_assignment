@@ -1,12 +1,25 @@
 require('dotenv').config(); // Load .env variables into process.env
 const express = require('express');
 const { Client } = require('pg');
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.DB_PORT || 3000;
+const PORT = process.env.DB_PORT || 5000;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+ // Enable CORS for all routes
+ app.use(cors({
+    origin: 'http://localhost:3000',  // or '*' for all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  }));
+
+//   // Default Next.js route handler
+//   app.all('*', (req, res) => {
+//     return handle(req, res);
+//   });
+
 
 // PostgreSQL client setup
 const client = new Client({
@@ -22,13 +35,15 @@ client.connect()
 app.post('/users', async (req, res) => {
     const { name, gender, dob, age, mobile_number, address_state, address_district, address_pin_code } = req.body;
 
+    console.log('Request body:', req.body);
+
     // Ensure either dob or age is provided but not both
     if ((dob && age) || (!dob && !age)) {
         return res.status(400).json({ error: 'Provide either DOB or Age, but not both.' });
     }
 
     try {
-        const result = await pool.query(
+        const result = await client.query(
             `INSERT INTO users 
             (name, gender, dob, age, mobile_number, address_state, address_district, address_pin_code)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -45,7 +60,7 @@ app.post('/users', async (req, res) => {
 // GET request to fetch all user data
 app.get('/users', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM users');
+        const result = await client.query('SELECT * FROM users');
         res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error fetching data:', error);
