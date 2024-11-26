@@ -38,9 +38,13 @@ const CombinedComponent = () => {
         }, 3000);
       } else {
         const error = await response.json();
+        resetForm();
+
         console.error('Error:', error);
       }
     } catch (error) {
+      resetForm();
+
       console.error('Error submitting form:', error);
     }
   };
