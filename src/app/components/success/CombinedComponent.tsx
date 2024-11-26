@@ -1,93 +1,94 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Success1 from "./Success1";
 import Success2 from "./Success2";
 import { useAccountCreation } from "@/app/accountContext";
 
 const CombinedComponent = () => {
-  const [showSuccess2, setShowSuccess2] = useState(false);
-  const {data}=useAccountCreation();
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     gender: '',
-//     dob: '',
-//     age: '',
-//     mobile_number: '',
-//     address_state: '',
-//     address_district: '',
-//     address_pin_code: '',
-// });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isPostSuccess, setIsPostSuccess] = useState(false);
+  const { data, resetForm } = useAccountCreation();
 
-  // useEffect(() => {
-  //   setFormData({
-  //     name:data.personalDetails?.name,
-  //     gender:data.personalDetails?.gender,
-  //     age:data.personalDetails?.age,
-  //     dob:data.personalDetails?.dob,
-  //     mobile_number:data.phoneNumber, 
-  //     address_state:data.address?.state,
-  //     address_district:data.address?.district,
-  //     address_pin_code:data.address?.pincode,
-  //   });
+  const loginType= data.loginType;
 
-  //   handleSubmit();
-  // },[]);
+  console.log("this is the login type",loginType);
+  const handleFormSubmission = async (submissionData) => {
+    try {
+      const response = await fetch('http://localhost:3500/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
 
-
-  console.log("this is the data to add in the DB",data);
-
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Response:', result);
+        setIsPostSuccess(true);
+        
+        // Show Success1 for 3 seconds after successful POST
+        setTimeout(() => {
+          setCurrentPage(2);
+          // Reset everything after showing Success1 for 3 seconds
+          setTimeout(() => {
+            resetForm();
+            setCurrentPage(1);
+            setIsPostSuccess(false);
+          }, 3000);
+        }, 3000);
+      } else {
+        const error = await response.json();
+        console.error('Error:', error);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSuccess2(true); // Switch to Success2 after 1 second
-    }, 2000);
+    if (loginType === "REGISTER" && data && data.personalDetails && !isPostSuccess) {
+      const formData = {
+        name: data.personalDetails?.name || '',
+        gender: data.personalDetails?.gender || '',
+        age: data.personalDetails?.age || '',
+        dob: data.personalDetails?.dob || '',
+        mobile_number: data.phoneNumber || '',
+        address_state: data.address?.state || '',
+        address_district: data.address?.district || '',
+        address_pin_code: data.address?.pincode || '',
+      };
+      
+      // Use a ref to track if submission has been made
+      const controller = new AbortController();
+      // if(loginType === "REGISTER"){
 
-    return () => clearTimeout(timer); // Clean up the timer on component unmount
-  }, []);
+      // } 
+      handleFormSubmission(formData);
+    
+      
+      
+      return () => {
+        controller.abort(); // Cleanup on unmount or re-render
+      };
+    }
 
+    else{
+      setTimeout(() => {
+        setCurrentPage(2);
+        // Reset everything after showing Success1 for 3 seconds
+        setTimeout(() => {
+          resetForm();
+          setCurrentPage(1);
+          setIsPostSuccess(false);
+        }, 3000);
+      }, 3000);
 
-//   const handleSubmit = async () => {
-
-  
-
-//     try {
-//         const response = await fetch('http://localhost:3500/users', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(formData),
-//         });
-
-//         if (response.ok) {
-//             const result = await response.json();
-//             // console('User added successfully!');
-//             console.log('Response:', result);
-//             // Clear the form
-//             setFormData({
-//                 name: '',
-//                 gender: '',
-//                 dob: '',
-//                 age: '',
-//                 mobile_number: '',
-//                 address_state: '',
-//                 address_district: '',
-//                 address_pin_code: '',
-//             });
-//         } else {
-//             const error = await response.json();
-//             // setMessage(`Error: ${error.error}`);
-//             console.log('Error:', error);
-//             console.error('Error:', error);
-//         }
-//     } catch (error) {
-//         console.error('Error submitting form:', error);
-//         // setMessage('Failed to add user.');
-//     }
-// };
+    }
+  }, [data]); // Only depend on data changes
 
   return (
-    <div>
-      {showSuccess2 ? <Success1 /> : <Success2 />}
+    <div className="flex justify-center items-center min-h-screen">
+      {currentPage === 1 ? <Success2 /> : <Success1 />}
     </div>
   );
 };
