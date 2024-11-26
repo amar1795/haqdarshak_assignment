@@ -26,7 +26,7 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
 
   return (
     <div>
-      <div>
+      <div className=" ">
         {currentSetupStep !== "LANGUAGE" && (
           <button
             className=" bg-white  w-[5rem] rounded-2xl"
@@ -35,12 +35,12 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
             <div className=" text-[2rem]">&#8592;</div>
           </button>
         )}
-        <div className=" h-[10vh] mb-8 ">
-          <h1 className=" text-white text-[3rem]"> {question}</h1>
+        <div className=" h-[10vh] below-321:h-[5vh] below-321:mt-4 mb-8 below-445:mb-1 ">
+          <h1 className=" text-white text-[3rem] below-700:text-[2rem] below-445:text-[1.5rem] below-321:text-[1.2rem] "> {question}</h1>
         </div>
         <div className=" bg-white w-full h-[70vh] rounded-2xl  flex flex-col justify-around items-center ">
           {/* <Radiobox/> */}
-          <div>
+          <div className="below-321:mx-5">
             {radioOptions.map((option, index) => (
               <RadioOption
                 key={index}

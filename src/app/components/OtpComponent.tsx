@@ -45,7 +45,7 @@ const OtpComponent = ({setOtp,setError,otp}) => {
           value={digit}
           onChange={(e) => handleChange(e.target.value, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          className="w-12 h-12 text-center text-lg border bg-[#e5e1de] rounded-md focus:outline-none focus:ring-2 focus:ring-[#4f285e] text-[#4f285e]"
+          className="w-12 h-12 below-445:h-9 below-445:w-9  below-321:h-7 below-321:w-7 text-center text-lg border bg-[#e5e1de] rounded-md focus:outline-none focus:ring-2 focus:ring-[#4f285e] text-[#4f285e]"
         />
       ))}
     </div>

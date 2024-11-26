@@ -15,10 +15,10 @@ const NextButton = ({stepData}) => {
 <button 
   onClick={nextStep}
   disabled={!data?.[stepData]} // Check if the dynamic field in data is empty or undefined
-  className={` bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center ${
+  className={` bg-[#4f285e] w-[20rem] below-445:w-[15rem] below-321:w-[10rem] below-321:h-[3rem]  h-[4rem] rounded-2xl flex items-center justify-center ${
     !data?.[stepData] ? "opacity-50 cursor-not-allowed" : ""
   }`}>
-  <h1 className=' text-white'>Next</h1>
+  <h1 className=' text-white below-321:text-[0.8rem]'>Next</h1>
 </button>
   )
 }

@@ -110,27 +110,27 @@ const handleDOBChange = (e) => {
 
   return (
     <div>
-      <div>
+      <div className="below-378:flex below-445:flex-col below-445:justify-center below-445:items-center">
         {currentSetupStep.toLowerCase() !== stepData && (
           <button className="bg-white w-[5rem] rounded-2xl" onClick={prevStep}>
             <div className="text-[2rem]">&#8592;</div>
           </button>
         )}
-        <div className="h-[10vh] mb-8">
-          <h1 className="text-white text-[3rem]">{question}</h1>
+        <div className="h-[10vh] below-445:h-[7vh] below-445:mt-4 mb-8 below-700:mb-2">
+          <h1 className="text-white text-[3rem] below-700:text-[2rem] below-445:text-[1.5rem] below-321:text-[1rem]">{question}</h1>
         </div>
-        <div className="bg-white w-full h-[70vh] rounded-2xl flex flex-col justify-around items-center">
+        <div className="bg-white w-full h-[70vh] below-321:w-[90vw] below-445:w-[80vw] rounded-2xl flex flex-col justify-around items-center">
           <div>
             <div>
               <div className="mt-2">
-                <h1 className="ml-2">Name</h1>
-                <div className="w-[25rem] mt-2 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
-                  <p className="text-[0.8rem] relative top-1">Full Name</p>
+                <h1 className="ml-2 below-321:text-[0.8rem]">Name</h1>
+                <div className="w-[25rem] below-445:w-[20rem] below-321:h-[3rem] below-378:w-[15rem] mt-2 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
+                  <p className="text-[0.8rem] relative top-1 below-321:text-[0.5rem]">Full Name</p>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={handleNameChange}
-                    className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e] w-full"
+                    className="bg-[#e5e1de] below-321:text-[0.8rem] below-321:h-[2rem] outline-none h-[2rem] text-[#4f285e] w-full"
                     placeholder="Enter your full Name"
                   />
                 </div>
@@ -142,7 +142,7 @@ const handleDOBChange = (e) => {
 
             <div>
               <div className="mt-4">
-                <h1>Gender</h1>
+                <h1 className=" below-321:text-[0.8rem]">Gender</h1>
                 <div className="flex justify-around mt-2">
                   {['Male', 'Female', 'Others'].map((option) => (
                     <div key={option} className="flex items-center">
@@ -155,7 +155,7 @@ const handleDOBChange = (e) => {
                         onChange={handleGenderChange}
                         style={{ accentColor: "#4f285e" }}
                       />
-                      <label htmlFor={option} className="ml-2">{option}</label>
+                      <label htmlFor={option} className="ml-2 below-321:text-[0.8rem]">{option}</label>
                     </div>
                   ))}
                 </div>
@@ -166,25 +166,25 @@ const handleDOBChange = (e) => {
             <div className="border-t border-gray-300 my-4" />
 
             <div className="mt-5">
-              <h1>DOB/Age</h1>
+              <h1 className=" below-321:text-[0.8rem]">DOB/Age</h1>
               <div className="flex mt-2">
-                <div className="w-[17rem] mt-1 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
-                  <p className="text-[0.8rem] relative top-1">Date of birth</p>
+                <div className="w-[17rem] below-445:w-[11rem] below-378:w-[8rem] below-321:h-[3rem]  mt-1 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
+                  <p className="text-[0.8rem] relative top-1 below-321:text-[0.5rem]">Date of birth</p>
                   <input
                     type="text"
                     value={formData.dob}
                     onChange={handleDOBChange}
-                    className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e] w-full"
+                    className="bg-[#e5e1de] below-321:text-[0.8rem] below-321:h-[2rem] outline-none h-[2rem] text-[#4f285e] w-full"
                     placeholder="dd/mm/yyyy"
                   />
                 </div>
-                <div className="self-center px-3">OR</div>
-                <div className="w-[5rem] flex items-center mt-1 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
+                <div className="self-center px-3 below-321:text-[0.8rem]">OR</div>
+                <div className="w-[5rem] flex items-center mt-1 below-321:h-[3rem] bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
                   <input
                     type="text"
                     value={formData.age}
                     onChange={handleAgeChange}
-                    className="bg-[#e5e1de] outline-none h-[2rem] w-full text-[#4f285e]"
+                    className="bg-[#e5e1de] below-321:text-[0.8rem] below-321:h-[2rem] outline-none h-[2rem] w-full text-[#4f285e]"
                     placeholder="Age"
                   />
                 </div>
@@ -196,7 +196,7 @@ const handleDOBChange = (e) => {
           <button
             onClick={handleNext}
             disabled={!isFormValid()}
-            className={`w-[25rem] h-[4rem] rounded-xl text-white text-xl ${
+            className={`w-[25rem] below-321:w-[8rem]  below-321:h-[3rem]  below-321:text-[0.7rem]  below-445:w-[15rem] below-378:w-[10rem] below-378:text-[0.8rem] h-[4rem] rounded-xl text-white text-xl ${
               isFormValid() ? 'bg-[#4f285e] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'
             }`}
           >

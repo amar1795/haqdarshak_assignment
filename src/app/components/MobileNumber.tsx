@@ -16,14 +16,13 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
   const [isTimerActive, setIsTimerActive] = useState(false); // Track timer status
   const [showResend, setShowResend] = useState(false); // Track if Resend OTP button should show
 
-
   const handlePhoneChange = (e) => {
     const phoneValue = e.target.value;
-  
+
     // Allow only digits and limit to 10 digits
     if (/^\d{0,10}$/.test(phoneValue)) {
       updateData("phoneNumber", phoneValue); // Update the phone number with the allowed value
-  
+
       // Show error if phone number is less than 10 digits
       if (phoneValue.length < 10) {
         setError("Phone number must be 10 digits.");
@@ -32,7 +31,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
       }
     }
   };
-  
+
   // Countdown timer effect
   useEffect(() => {
     if (timer === 0) {
@@ -89,51 +88,54 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
       )}
 
       {!showOtpConfirm && !showOtpInput && (
-        <>
-          <div className=" h-[10vh] mb-2 ">
-            <h1 className=" text-white text-[3rem]"> {question}</h1>
+        <div className="  flex flex-col items-center  justify-center">
+          <div className=" h-[10vh] mb-2  below-700:mb-1  ">
+            <h1 className=" text-white text-[3rem]  below-700:text-[2rem] below-445:text-[1.5rem] below-321:text-[1.2rem]"> {question}</h1>
           </div>
-          <div className="bg-white w-[50vw] h-[70vh] rounded-2xl flex flex-col justify-around items-center">
-      <div>
-        <div className="mt-2">
-          <div className="w-[25rem] mt-2 bg-[#e5e1de] border-2 rounded-xl relative h-[4rem] px-4 border-gray-300">
-            <p className="text-[0.8rem] relative top-1">Mobile Number</p>
-            <input
-              type="tel"
-              id="phoneNumber"
-              onChange={handlePhoneChange}
-              value={data.phoneNumber || ""}
-              className="bg-[#e5e1de] outline-none h-[2rem] text-[#4f285e]"
-              placeholder="Enter your Mobile number"
-            />
-          </div>
-        </div>
-        {error && <p className="text-red-500 text-xs mt-2">{error}</p>} {/* Display error message */}
-      </div>
+          <div className="bg-white w-[50vw] below-321:w-[80vw] below-700:w-[80%] h-[70vh] rounded-2xl flex flex-col justify-around items-center">
+            <div>
+              <div className="mt-2 ">
+                <div className="w-[20rem] below-445:w-[15rem]  mt-2 bg-[#e5e1de] border-2 rounded-xl  h-[4rem] px-4 border-gray-300 ">
+                  <p className="text-[0.8rem] relative top-1 below-321:text-[0.7rem]">Mobile Number</p>
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    onChange={handlePhoneChange}
+                    value={data.phoneNumber || ""}
+                    className="bg-[#e5e1de]   outline-none h-[2rem] text-[#4f285e] below-321:text-[0.8rem]"
+                    placeholder="Enter your Mobile number"
+                  />
+                </div>
+              </div>
+              {error && <p className="text-red-500 text-xs mt-2 below-321:text-[0.5rem]">{error}</p>}{" "}
+              {/* Display error message */}
+            </div>
 
-      <button
-        onClick={handleNext}
-        disabled={data?.phoneNumber?.length !== 10} // Check if phone number is exactly 10 digits
-        className={`bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center ${
-          data?.phoneNumber?.length !== 10 ? "opacity-50 cursor-not-allowed" : ""
-        }`}
-      >
-        <h1 className="text-white">Next</h1>
-      </button>
-    </div>
-        </>
+            <button
+              onClick={handleNext}
+              disabled={data?.phoneNumber?.length !== 10} // Check if phone number is exactly 10 digits
+              className={`bg-[#4f285e] w-[50%] h-[4rem]  rounded-2xl flex items-center justify-center ${
+                data?.phoneNumber?.length !== 10
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
+            >
+              <h1 className="text-white below-321:text-[0.7rem]">Next</h1>
+            </button>
+          </div>
+        </div>  
       )}
 
       {showOtpConfirm && !showOtpInput && (
-        <div className="flex flex-col gap-4 w-[60vw]">
-          <div className=" h-[10vh]  ">
-            <h1 className=" text-white text-[3rem]">
+        <div className="flex flex-col gap-4 w-[60vw] below-445:w-[20rem] below-321:items-center">
+          <div className=" h-[10vh] below-445:h-[5vh] ">
+            <h1 className=" text-white text-[3rem] below-321:text-[1rem]  below-700:text-[2rem] below-445:text-[1.2rem] below-445:text-center ">
               Do you want to proceed without the OTP verification
             </h1>
           </div>
-          <div className=" bg-white w-full h-[70vh] rounded-2xl flex flex-col  items-center ">
-            <div className=" flex flex-col h-[40vh]  mt-6">
-              <div className=" w-[20rem] ">
+          <div className=" bg-white w-full h-[70vh] below-321:w-[90vw]  below-700:h-[60vh] below-700:mt-[4vh] rounded-2xl flex flex-col  items-center ">
+            <div className=" flex flex-col h-[40vh]   mt-6">
+              <div className=" w-[20rem] below-445:w-[15rem] ">
                 <div className=" bg-[#e5e1de] border-2 rounded-xl flex h-[4rem] px-4 border-gray-300">
                   <input
                     type="radio"
@@ -143,11 +145,13 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                     onChange={() => setOtpChoice("no")}
                     checked={otpChoice === "no"}
                   />
-                  <h1 className=" pl-2 items-center 500 self-center">Yes,proceed without OTP</h1>
+                  <h1 className=" pl-2 items-center 500 self-center below-321:text-[0.7rem]">
+                    Yes,proceed without OTP
+                  </h1>
                 </div>
               </div>
 
-              <div className=" w-[20rem] mt-9 ">
+              <div className=" w-[20rem] mt-9 below-445:w-[15rem] ">
                 <div className=" bg-[#e5e1de] border-2 rounded-xl flex h-[4rem] px-4 border-gray-300">
                   <input
                     type="radio"
@@ -157,8 +161,8 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                     onChange={() => setOtpChoice("yes")}
                     checked={otpChoice === "yes"}
                   />
-                  <h1 className=" pl-2 items-center 500 self-center">
-                   No,send me the OTP
+                  <h1 className=" pl-2 items-center 500 self-center below-321:text-[0.7rem]">
+                    No,send me the OTP
                   </h1>
                 </div>
               </div>
@@ -167,33 +171,33 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
             <button
               onClick={handleOtpConfirmNext}
               disabled={otpChoice === null}
-              className={`bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center ${
+              className={`bg-[#4f285e] w-[20rem]  below-321:w-[10rem] below-321:h-[3rem] below-445:w-[15rem] h-[4rem] rounded-2xl flex items-center justify-center ${
                 otpChoice === null ? "opacity-50" : ""
               }`}
             >
-              <h1 className=" text-white">Next</h1>
+              <h1 className=" text-white below-321:text-[0.8rem]">Next</h1>
             </button>
           </div>
         </div>
       )}
 
       {showOtpInput && (
-        <div className="flex flex-col gap-4 w-[50vw]">
-          <div className=" h-[10vh] mb-2 ">
-            <h1 className=" text-white text-[3rem]">Enter OTP</h1>
+        <div className="flex flex-col gap-4 w-[50vw] below-445:w-[80vw]">
+          <div className=" h-[10vh] below-445:h-[8vh] mb-2 self-center   below-700:mb-0 ">
+            <h1 className=" text-white text-[3rem] below-700:text-[2rem] below-321:text-[1.5rem]">Enter OTP</h1>
           </div>
-          <div className=" bg-white w-full h-[70vh] rounded-2xl flex flex-col justify-around items-center ">
-            <div className=" w-[25rem] mt-2">
-              <div className="  ">
+          <div className=" bg-white w-full  h-[70vh] rounded-2xl flex flex-col justify-around items-center ">
+            <div className=" w-[25rem]  below-445:w-[20rem] mt-2">
+              <div className=" relative">
                 {/* <h2 className="  ml-[2rem] mb-[1rem] ">Please enter OTP</h2> */}
                 <OtpComponent setOtp={setOtp} setError={setError} otp={otp} />
 
-                <p className=" self-center items-center text-gray-500 ml-[3rem] mt-[2rem]">
+                <p className=" self-center items-center text-gray-500 ml-[3rem] mt-[2rem] below-321:text-[0.7rem]">
                   We have sent OTP to your mobile number
                 </p>
-                <p className=" self-center items-center text-[#4f285e] ml-[3rem] mt-[1rem]">
+                <p className=" self-center below-321:text-[0.7rem] items-center text-[#4f285e] ml-[3rem] mt-[1rem]">
                   Resend Code in{" "}
-                  <span className="mt-4 text-lg">
+                  <span className="mt-4 text-lg below-321:text-[0.7rem]">
                     {isTimerActive
                       ? ` ${Math.floor(timer / 60)}:${(
                           "0" +
@@ -206,7 +210,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                 {showResend && (
                   <button
                     onClick={handleResendOTP}
-                    className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                    className="mt-4 px-4 py-2 below-321:text-[0.8rem] below-445:ml-[5rem] bg-green-500 text-white rounded-md hover:bg-green-600"
                   >
                     Resend OTP
                   </button>
@@ -214,7 +218,7 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
               </div>
 
               {error && (
-                <span className="text-red-500 text-sm mt-1">{error}</span>
+                <span className="text-red-500 text-sm mt-1 relative left-10">{error}</span>
               )}
             </div>
             <button
@@ -225,9 +229,9 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
                 }
                 nextStep();
               }}
-              className="bg-[#4f285e] w-[20rem] h-[4rem] rounded-2xl flex items-center justify-center"
+              className="bg-[#4f285e] w-[20rem] below-445:w-[15rem] below-321:w-[10rem] below-321:h-[3rem] h-[4rem] rounded-2xl flex items-center justify-center"
             >
-              <h1 className=" text-white">Next</h1>
+              <h1 className=" text-white  below-321:text-[0.8rem]">Next</h1>
             </button>
           </div>
         </div>
