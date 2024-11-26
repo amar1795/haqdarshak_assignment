@@ -13,7 +13,7 @@ const CombinedComponent = () => {
   // console.log("this is the login type",loginType);
   const handleFormSubmission = async (submissionData) => {
     try {
-      const response = await fetch('http://lochost:3500/users', {
+      const response = await fetch('https://haqdarshaqbackend.vercel.app/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,15 +42,15 @@ const CombinedComponent = () => {
         console.error('Error:', error);
       }
     } catch (error) {
-      setTimeout(() => {
-        setCurrentPage(2);
-        // Reset everything after showing Success1 for 3 seconds
-        setTimeout(() => {
-          resetForm();
-          setCurrentPage(1);
-          setIsPostSuccess(false);
-        }, 3000);
-      }, 3000);
+      // setTimeout(() => {
+      //   setCurrentPage(2);
+      //   // Reset everything after showing Success1 for 3 seconds
+      //   setTimeout(() => {
+      //     resetForm();
+      //     setCurrentPage(1);
+      //     setIsPostSuccess(false);
+      //   }, 3000);
+      // }, 3000);
       // console.log('Error submitting form:', error);
     }
   };
