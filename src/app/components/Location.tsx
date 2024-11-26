@@ -72,7 +72,7 @@ const Location = ({ question, radioOptions, stepData }) => {
             <div>
               <button
                 className="flex bg-[#e5e1de] w-[20rem] h-[4rem] items-center px-7 rounded-2xl"
-                onClick={nextStep}
+                onClick={handleLocation}
               >
                 <img src="vector.png" className="w-[1.5rem] h-[1.5rem]" alt="" />
                 <h1 className="ml-3">Use Current Location</h1>
