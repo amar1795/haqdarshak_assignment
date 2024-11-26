@@ -12,6 +12,7 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
 
   const [usePhoneNumber, setUsePhoneNumber] = useState(false);
   console.log("this is the current step", currentSetupStep);
+  console.log("this is the current data", data);
 
   if (stepData == "otp" && usePhoneNumber) {
     return (
@@ -66,7 +67,8 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
           )}
 
           <div>
-            <NextButton />
+            <NextButton  stepData={stepData}
+ />
           </div>
         </div>
       </div>

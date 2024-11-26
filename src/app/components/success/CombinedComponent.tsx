@@ -15,7 +15,7 @@ const CombinedComponent = () => {
 
   return (
     <div>
-      {showSuccess2 ? <Success2 /> : <Success1 />}
+      {showSuccess2 ? <Success1 /> : <Success2 />}
     </div>
   );
 };
