@@ -10,10 +10,10 @@ const CombinedComponent = () => {
 
   const loginType= data.loginType;
 
-  console.log("this is the login type",loginType);
+  // console.log("this is the login type",loginType);
   const handleFormSubmission = async (submissionData) => {
     try {
-      const response = await fetch('http://localhost:3500/users', {
+      const response = await fetch('http://lochost:3500/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const CombinedComponent = () => {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Response:', result);
+        // console.log('Response:', result);
         setIsPostSuccess(true);
         
         // Show Success1 for 3 seconds after successful POST
@@ -38,14 +38,20 @@ const CombinedComponent = () => {
         }, 3000);
       } else {
         const error = await response.json();
-        resetForm();
-
+        
         console.error('Error:', error);
       }
     } catch (error) {
-      resetForm();
-
-      console.error('Error submitting form:', error);
+      setTimeout(() => {
+        setCurrentPage(2);
+        // Reset everything after showing Success1 for 3 seconds
+        setTimeout(() => {
+          resetForm();
+          setCurrentPage(1);
+          setIsPostSuccess(false);
+        }, 3000);
+      }, 3000);
+      // console.log('Error submitting form:', error);
     }
   };
 

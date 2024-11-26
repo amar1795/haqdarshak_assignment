@@ -29,9 +29,9 @@ const StateDropdown = ({stepData}) => {
 
   const handleChange = (e) => {   
     // alert('clicked') 
-    console.log('this is the stepData',stepData)
+    // console.log('this is the stepData',stepData)
     const value = e.target.value;
-    console.log('this is the data?.language and value',data?.language,value)
+    // console.log('this is the data?.language and value',data?.language,value)
     setSelectedState(value);
 
       updateData(stepData, value); // Update the selected language

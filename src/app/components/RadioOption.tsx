@@ -8,8 +8,8 @@ const RadioOption = ({text,value,stepData}) => {
 
     const handleChange = (e) => {   
       // alert('clicked') 
-      console.log('this is the stepData',stepData)
-      console.log('this is the stepData and value',stepData,value)
+      // console.log('this is the stepData',stepData)
+      // console.log('this is the stepData and value',stepData,value)
         updateData(stepData, value); // Update the selected language
       };
   return (

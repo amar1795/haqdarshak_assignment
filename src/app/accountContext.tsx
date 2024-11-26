@@ -70,7 +70,7 @@ const INITIAL_DATA: AccountData = {
   cardScanData: "",
 };
 
-console.log("this is the initial data",INITIAL_DATA);
+// console.log("this is the initial data",INITIAL_DATA);
 
 // Define step sequences for each login type
 const STEP_SEQUENCES: Record<LoginType, StepConfig[]> = {
@@ -217,8 +217,8 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
     if (typeof window !== "undefined") {
       try {
         localStorage.setItem("accountCreationData", JSON.stringify(data));
-        console.log("this is the data",data);
-        console.log("this is the current step",currentSetupStep);
+        // console.log("this is the data",data);
+        // console.log("this is the current step",currentSetupStep);
       } catch (error) {
         console.error("Error saving to localStorage:", error);
       }

@@ -54,10 +54,10 @@ const MobileNumber = ({ question, radioOptions, stepData }) => {
     setTimer(180); // Reset timer to 3 minutes
     setIsTimerActive(true); // Restart the countdown
     setShowResend(false); // Hide the Resend OTP button again
-    console.log("Resend OTP triggered");
+    // console.log("Resend OTP triggered");
   };
 
-  console.log("this is the otp", otp);
+  // console.log("this is the otp", otp);
   const [error, setError] = useState("");
   const handleNext = () => {
     if (!data.phoneNumber) {

@@ -5,10 +5,10 @@ const NextButton = ({stepData}) => {
     const { currentSetupStep, data, errors, nextStep, prevStep, updateData } =
     useAccountCreation();
 
-    console.log("this is the current step data and stepdata", currentSetupStep,stepData,data);
+    // console.log("this is the current step data and stepdata", currentSetupStep,stepData,data);
     useEffect(() => {
       // alert("Selected language: " + data?.language);
-      console.log("this is the errors",errors);
+      // console.log("this is the errors",errors);
       }, [errors]);
       
   return (

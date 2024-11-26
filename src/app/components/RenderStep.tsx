@@ -14,7 +14,7 @@ import CombinedComponent from "./success/CombinedComponent";
 const RenderStep = () => {
   const { currentSetupStep, data, updateData, errors, nextStep, prevStep } =
     useAccountCreation();
-  console.log("this is the current step", currentSetupStep);
+  // console.log("this is the current step", currentSetupStep);
   const QuestionDisplay = () => {
     switch (currentSetupStep) {
       case StepType.LANGUAGE:

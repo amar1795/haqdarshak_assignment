@@ -11,8 +11,8 @@ const MainComponent = ({ question, radioOptions, stepData }) => {
     useAccountCreation();
 
   const [usePhoneNumber, setUsePhoneNumber] = useState(false);
-  console.log("this is the current step", currentSetupStep);
-  console.log("this is the current data", data);
+  // console.log("this is the current step", currentSetupStep);
+  // console.log("this is the current data", data);
 
   if (stepData == "otp" && usePhoneNumber) {
     return (
