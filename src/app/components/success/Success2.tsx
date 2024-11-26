@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CustomSpinner from "../Spinner/CustomSpinner";
+import { useAccountCreation } from "@/app/accountContext";
 
 const Success2 = () => {
   const [currentStep, setCurrentStep] = useState(0); 
+    const {resetForm}=useAccountCreation();
 
   useEffect(() => {
     if (currentStep < 3) { 
@@ -11,6 +13,7 @@ const Success2 = () => {
       }, 1000);
       return () => clearTimeout(timer);
     }
+    resetForm();
   }, [currentStep]);
 
   
