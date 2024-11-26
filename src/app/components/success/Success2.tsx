@@ -24,13 +24,13 @@ const Success2 = () => {
   ];
 
   return (
-    <div className="bg-[#4f285e] h-screen w-[50vw] py-12">
+    <div className="bg-[#4f285e] h-screen  w-full py-12 flex flex-col">
       <div className="text-white text-center">
-        <h1 className="leading-none text-[6rem]">हकदर्शक</h1>
-        <h1 className="leading-none text-[4rem]">Haqdarshaq</h1>
+        <h1 className="leading-none below-1000:text-[4rem]  text-[6rem]  ">हकदर्शक</h1>
+        <h1 className="leading-none below-1000:text-[3rem] text-[4rem]   ">Haqdarshaq</h1>
       </div>
 
-      <div className="mt-[8rem] pl-[10rem]">
+      <div className="mt-[8rem] pl-[10rem] below-1319:pl-[4rem] below-500:pl-[1rem]">
         {items.map((item, index) => (
           <div key={index} className="flex mb-7">
             <div className="left flex">
@@ -41,7 +41,7 @@ const Success2 = () => {
               )}
             </div>
             <div className="right pl-[2rem] self-center text-white text-[1.2rem]">
-              <h1>{item}</h1>
+              <h1 className="below-700:text-[0.8rem]">{item}</h1>
             </div>
           </div>
         ))}

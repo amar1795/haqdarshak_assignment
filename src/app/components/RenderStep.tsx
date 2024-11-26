@@ -19,6 +19,7 @@ const RenderStep = () => {
     switch (currentSetupStep) {
       case StepType.LANGUAGE:
         return (
+
           <div>
             <MainComponent
               stepData={"language"}

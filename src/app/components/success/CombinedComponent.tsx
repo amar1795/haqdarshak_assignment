@@ -84,7 +84,7 @@ const CombinedComponent = () => {
       }, 3000);
 
     }
-  }, [data]); // Only depend on data changes
+  }, [data]); 
 
   return (
     <div className="flex justify-center items-center min-h-screen">

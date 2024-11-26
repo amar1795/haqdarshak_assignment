@@ -31,7 +31,7 @@ export default function Home() {
   const slides = [
     {
       content: (
-        <div className="text-white text-[5rem] text-center">
+        <div className="text-white text-[5rem] text-center below-500:text-[3rem]">
           <h1 className="leading-none">हकदर्शक</h1>
           <h1 className="leading-none">haqdarshaq</h1>
         </div>
@@ -42,12 +42,12 @@ export default function Home() {
       content: (
         <div className="text-[#4f285e] text-[5rem] text-center items-center">
           <div className="items-center flex flex-col justify-center">
-            <h1 className="leading-none">Getting benefits is now easy!</h1>
+            <h1 className="leading-none below-1265:text-[4rem] below-1265:mb-4 below-700:text-[2rem]">Getting benefits is now easy!</h1>
             <div className="bg-black relative">
               <div className="bg-pink-700 flex items-center justify-center">
-                <img src="line5.png" alt="" />
+                <img src="line5.png" alt=""  />
               </div>
-              <img src="hqmenuimage.png" alt="sdgsd" />
+              <img src="hqmenuimage.png" alt="sdgsd" className=" below-700:h-[25rem]" />
             </div>
           </div>
         </div>
